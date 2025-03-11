@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  apache:
+    image: httpd:2.4
+    ports:
+      - "8080:80"
+      - "2222:22"
+    volumes:
+      - $HOME/http:/usr/local/apache2/htdocs/
+    networks:
+          my_network:
+            ipv4_address: 192.168.1.200
+networks:
+  my_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
