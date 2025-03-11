@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: some-rabbit
+    hostname: my-rabbit
+    environment:
+      RABBITMQ_DEFAULT_USER: yas
+      RABBITMQ_DEFAULT_PASS: 2006702231
+    ports:
+      - "5672:5672"  # Puerto para las aplicaciones
+      - "15672:15672"  # Interfaz web de administración
+    restart: unless-stopped
