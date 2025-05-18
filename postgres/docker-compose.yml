@@ -1,0 +1,26 @@
+version: '3.8'
+
+name: my_postgres_db
+services:
+  db:
+    image: postgres:17
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_DB: app_task_db        # nombre de la base de datos a crear
+      POSTGRES_USER: yas # usuario personalizado
+      POSTGRES_PASSWORD: 123 # contraseña personalizada
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # volumen persistente
+      - ./init:/docker-entrypoint-initdb.d      # scripts de inicialización
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8090:8080
+
+volumes:
+  postgres_data:

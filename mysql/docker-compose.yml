@@ -7,11 +7,11 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 2006702231
-      MYSQL_DATABASE: mydb
+      MYSQL_DATABASE: stockdb
       MYSQL_USER: yas
-      MYSQL_PASSWORD: 2006702231
+      MYSQL_PASSWORD: 123
     ports:
-      - "3306:3306"
+      - 3306:3306
     volumes:
       - mysql_data:/var/lib/mysql
 
